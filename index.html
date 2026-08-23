@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Portfolio | นางสาวภัคจิรา อาจอินทร์</title>
+
+    <!-- เชื่อมไฟล์ CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         ส่วน Hero
+         ส่วนแนะนำตัวหลักของเว็บไซต์
+    ========================== -->
+    <header class="hero" id="home">
+        <nav class="navbar">
+            <h2 class="logo">Portfolio</h2>
+
+            <!-- เมนูนำทางไปยังแต่ละส่วน -->
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="hero-content">
+            <p class="welcome">WELCOME TO MY PORTFOLIO</p>
+
+            <h1>Pakjira Artin<br>
+                <span>Thanyaburi School</span>
+            </h1>
+
+            <p>
+                นักเรียนมัธยมปลาย
+                สนใจด้านเทคโนโลยี การเขียนโปรแกรม
+                และการเรียนรู้สิ่งใหม่ ๆ
+            </p>
+
+            <!-- ปุ่มเลื่อนไปยัง Projects -->
+            <a href="#projects" class="btn">ดูผลงานของฉัน</a>
+        </div>
+    </header>
+
+
+    <!-- =========================
+         ส่วน About
+         แนะนำข้อมูลเกี่ยวกับตัวเอง
+    ========================== -->
+    <section class="about section" id="about">
+        <div class="container">
+
+            <p class="section-title">ABOUT ME</p>
+            <h2>เกี่ยวกับฉัน</h2>
+
+            <div class="about-content">
+
+                <!-- รูปโปรไฟล์ สามารถเปลี่ยนเป็นรูปของตัวเอง -->
+                <div class="profile-image">
+                    <img src="7.jfif" alt="รูปโปรไฟล์">
+                </div>
+
+                <div class="about-text">
+               
+                    <p>
+                        ฉันเป็นนักเรียนระดับมัธยมศึกษาตอนปลาย
+                        มีความสนใจด้านคอมพิวเตอร์ เทคโนโลยี
+                        และการพัฒนาเว็บไซต์
+                    </p>
+
+                    <p>
+                        ฉันชอบเรียนรู้สิ่งใหม่ ๆ และนำความรู้
+                        ที่ได้มาพัฒนาทักษะของตัวเอง
+                        รวมถึงการทำโครงงานและกิจกรรมต่าง ๆ
+                    </p>
+
+                    <!-- ข้อมูลพื้นฐาน -->
+                    <div class="info">
+                        <p><strong>ระดับการศึกษา:</strong> มัธยมศึกษาชั้นปีที่5</p>
+                        <p><strong>สายการเรียน:</strong> วิทยาศาสตร์-คอมพิวเตอร์</p>
+                        <p><strong>ความสนใจ:</strong> Programming, Technology, Web Design</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================
+         ส่วน Projects
+         แสดงผลงานหรือกิจกรรมที่เคยทำ
+    ========================== -->
+    <section class="projects section" id="projects">
+        <div class="container">
+
+            <p class="section-title">MY PROJECTS</p>
+            <h2>ผลงานของฉัน</h2>
+
+            <div class="project-grid">
+
+                <!-- Project 1 -->
+                <article class="project-card">
+                    <div class="project-image">
+                        <img src="13.jfif" alt="ผลงานที่ 1">
+                    </div>
+
+                    <div class="project-content">
+                        <h3>เว็บไซต์ Portfolio</h3>
+
+                        <p>
+                            สร้างเว็บไซต์ Portfolio
+                            เพื่อรวบรวมข้อมูลส่วนตัว
+                            ผลงาน และกิจกรรมที่เคยทำ
+                        </p>
+
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                    </div>
+                </article>
+
+
+                <!-- Project 2 -->
+                <article class="project-card">
+                    <div class="project-image">
+                        <img src="12.jfif" alt="ผลงานที่ 2">
+                    </div>
+
+                    <div class="project-content">
+                        <h3>โครงงานนักเรียน</h3>
+
+                        <p>
+                            โครงงานที่จัดทำขึ้นเพื่อฝึกการค้นคว้า
+                            การวิเคราะห์ข้อมูล และการนำเสนอผลงาน
+                        </p>
+
+                        <span class="tag">Project</span>
+                        <span class="tag">Research</span>
+                    </div>
+                </article>
+
+
+                <!-- Project 3 -->
+                <article class="project-card">
+                    <div class="project-image">
+                        <img src="6.jfif" alt="ผลงานที่ 3">
+                    </div>
+
+                    <div class="project-content">
+                        <h3>กิจกรรมและเกียรติบัตร</h3>
+
+                        <p>
+                            รวบรวมกิจกรรม การแข่งขัน
+                            การอบรม และเกียรติบัตรที่เคยได้รับ
+                        </p>
+
+                        <span class="tag">Activity</span>
+                        <span class="tag">Certificate</span>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================
+         ส่วน Contact
+         ช่องทางสำหรับติดต่อ
+    ========================== -->
+    <section class="contact section" id="contact">
+        <div class="container">
+
+            <p class="section-title">CONTACT ME</p>
+            <h2>ติดต่อฉัน</h2>
+
+            <p class="contact-text">
+                หากต้องการติดต่อหรือสอบถามข้อมูล
+                สามารถติดต่อผ่านช่องทางด้านล่างได้เลย
+            </p>
+
+            <div class="contact-info">
+                <p>📧 Email: xxxxxxxxxxxxz@gmail.com</p>
+                <p>📱 Instagram: xxxxxxz</p>
+                <p>📍 Location: Pathum Thani, Thailand</p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =========================
+         Footer
+         ส่วนท้ายของเว็บไซต์
+    ========================== -->
+    <footer>
+        <p>© 2026 My Portfolio. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
