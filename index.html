@@ -3,24 +3,264 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | CSTU Student</title>
+    
+    <style>
+        /* Modern Base Styles */
+        :root {
+            --primary-color: #e63946;
+            --dark-color: #1d3557;
+            --light-color: #f8f9fa;
+            --gray-color: #6c757d;
+            --transition: all 0.3s ease;
+        }
 
-    <title>Portfolio | นางสาวภัคจิรา อาจอินทร์</title>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    <!-- เชื่อมไฟล์ CSS -->
-    <link rel="stylesheet" href="style.css">
+        body {
+            background-color: var(--light-color);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Loading UI */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.5s ease;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navbar */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-color), #457b9d);
+            color: white;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .hero-content {
+            margin: auto;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 2.8rem;
+            margin: 15px 0;
+        }
+
+        .hero-content h1 span {
+            color: #a8dadc;
+            font-size: 1.8rem;
+            display: block;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            margin-top: 20px;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+        }
+
+        /* Section Global */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            letter-spacing: 2px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+            align-items: center;
+        }
+
+        .profile-image img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .info {
+            margin-top: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .skills-tag-container {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        /* Projects Section */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-date {
+            font-size: 0.85rem;
+            color: var(--gray-color);
+            margin-bottom: 5px;
+        }
+
+        .role-tag {
+            background: #e9ecef;
+            color: var(--dark-color);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Footer & Contact */
+        .contact {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+        }
+
+        footer {
+            background: #111;
+            color: #888;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- =========================
-         ส่วน Hero
-         ส่วนแนะนำตัวหลักของเว็บไซต์
-    ========================== -->
+    <!-- Loading Indicator -->
+    <div id="loading" class="loading-overlay">
+        <div class="spinner"></div>
+        <p style="margin-top: 15px; font-weight: 600; color: #1d3557;">กำลังโหลดข้อมูล Portfolio...</p>
+    </div>
+
+    <!-- Header Section -->
     <header class="hero" id="home">
         <nav class="navbar">
             <h2 class="logo">Portfolio</h2>
-
-            <!-- เมนูนำทางไปยังแต่ละส่วน -->
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -31,176 +271,169 @@
 
         <div class="hero-content">
             <p class="welcome">WELCOME TO MY PORTFOLIO</p>
-
-            <h1>Pakjira Artin<br>
-                <span>Thanyaburi School</span>
+            <h1>
+                <span id="hero-name">Loading Name...</span>
+                <span id="hero-university">Loading University...</span>
             </h1>
-
-            <p>
-                นักเรียนมัธยมปลาย
-                สนใจด้านเทคโนโลยี การเขียนโปรแกรม
-                และการเรียนรู้สิ่งใหม่ ๆ
-            </p>
-
-            <!-- ปุ่มเลื่อนไปยัง Projects -->
+            <p id="hero-job">Loading Information...</p>
             <a href="#projects" class="btn">ดูผลงานของฉัน</a>
         </div>
     </header>
 
-
-    <!-- =========================
-         ส่วน About
-         แนะนำข้อมูลเกี่ยวกับตัวเอง
-    ========================== -->
+    <!-- About Section -->
     <section class="about section" id="about">
         <div class="container">
-
             <p class="section-title">ABOUT ME</p>
             <h2>เกี่ยวกับฉัน</h2>
 
             <div class="about-content">
-
-                <!-- รูปโปรไฟล์ สามารถเปลี่ยนเป็นรูปของตัวเอง -->
                 <div class="profile-image">
-                    <img src="7.jfif" alt="รูปโปรไฟล์">
+                    <img id="profile-img" src="https://via.placeholder.com/250" alt="รูปโปรไฟล์">
                 </div>
 
-                <div class="about-text">
-               
-                    <p>
-                        ฉันเป็นนักเรียนระดับมัธยมศึกษาตอนปลาย
-                        มีความสนใจด้านคอมพิวเตอร์ เทคโนโลยี
-                        และการพัฒนาเว็บไซต์
-                    </p>
-
-                    <p>
-                        ฉันชอบเรียนรู้สิ่งใหม่ ๆ และนำความรู้
-                        ที่ได้มาพัฒนาทักษะของตัวเอง
-                        รวมถึงการทำโครงงานและกิจกรรมต่าง ๆ
-                    </p>
-
-                    <!-- ข้อมูลพื้นฐาน -->
+                <div class="about-text" style="flex: 1;">
+                    <p id="about-faculty-major">กำลังโหลดข้อมูลคณะและสาขา...</p>
+                    
                     <div class="info">
-                        <p><strong>ระดับการศึกษา:</strong> มัธยมศึกษาชั้นปีที่5</p>
-                        <p><strong>สายการเรียน:</strong> วิทยาศาสตร์-คอมพิวเตอร์</p>
-                        <p><strong>ความสนใจ:</strong> Programming, Technology, Web Design</p>
+                        <p><strong>ชื่อ-นามสกุล:</strong> <span id="info-fullname">-</span> (<span id="info-nickname">-</span>)</p>
+                        <p><strong>มหาวิทยาลัย:</strong> <span id="info-university">-</span></p>
+                        <p><strong>คณะ/สาขา:</strong> <span id="info-faculty-major">-</span></p>
+                        <p><strong>สถานะ:</strong> <span id="info-job">-</span></p>
+                        <p style="margin-top: 10px;"><strong>ทักษะ (Skills):</strong></p>
+                        <div id="skills-container" class="skills-tag-container">
+                            <!-- ทักษะจะถูก Render ที่นี่ -->
+                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
-
-    <!-- =========================
-         ส่วน Projects
-         แสดงผลงานหรือกิจกรรมที่เคยทำ
-    ========================== -->
+    <!-- Projects Section -->
     <section class="projects section" id="projects">
         <div class="container">
-
             <p class="section-title">MY PROJECTS</p>
             <h2>ผลงานของฉัน</h2>
 
-            <div class="project-grid">
-
-                <!-- Project 1 -->
-                <article class="project-card">
-                    <div class="project-image">
-                        <img src="13.jfif" alt="ผลงานที่ 1">
-                    </div>
-
-                    <div class="project-content">
-                        <h3>เว็บไซต์ Portfolio</h3>
-
-                        <p>
-                            สร้างเว็บไซต์ Portfolio
-                            เพื่อรวบรวมข้อมูลส่วนตัว
-                            ผลงาน และกิจกรรมที่เคยทำ
-                        </p>
-
-                        <span class="tag">HTML</span>
-                        <span class="tag">CSS</span>
-                    </div>
-                </article>
-
-
-                <!-- Project 2 -->
-                <article class="project-card">
-                    <div class="project-image">
-                        <img src="12.jfif" alt="ผลงานที่ 2">
-                    </div>
-
-                    <div class="project-content">
-                        <h3>โครงงานนักเรียน</h3>
-
-                        <p>
-                            โครงงานที่จัดทำขึ้นเพื่อฝึกการค้นคว้า
-                            การวิเคราะห์ข้อมูล และการนำเสนอผลงาน
-                        </p>
-
-                        <span class="tag">Project</span>
-                        <span class="tag">Research</span>
-                    </div>
-                </article>
-
-
-                <!-- Project 3 -->
-                <article class="project-card">
-                    <div class="project-image">
-                        <img src="6.jfif" alt="ผลงานที่ 3">
-                    </div>
-
-                    <div class="project-content">
-                        <h3>กิจกรรมและเกียรติบัตร</h3>
-
-                        <p>
-                            รวบรวมกิจกรรม การแข่งขัน
-                            การอบรม และเกียรติบัตรที่เคยได้รับ
-                        </p>
-
-                        <span class="tag">Activity</span>
-                        <span class="tag">Certificate</span>
-                    </div>
-                </article>
-
+            <!-- Cards Container -->
+            <div class="project-grid" id="project-grid">
+                <!-- โครงงานจะถูก Render ดึงมาใส่จาก API ผ่าน JavaScript -->
             </div>
         </div>
     </section>
 
-
-    <!-- =========================
-         ส่วน Contact
-         ช่องทางสำหรับติดต่อ
-    ========================== -->
+    <!-- Contact Section -->
     <section class="contact section" id="contact">
         <div class="container">
-
-            <p class="section-title">CONTACT ME</p>
+            <p class="section-title" style="color: #a8dadc;">CONTACT ME</p>
             <h2>ติดต่อฉัน</h2>
-
-            <p class="contact-text">
-                หากต้องการติดต่อหรือสอบถามข้อมูล
-                สามารถติดต่อผ่านช่องทางด้านล่างได้เลย
-            </p>
-
-            <div class="contact-info">
-                <p>📧 Email: xxxxxxxxxxxxz@gmail.com</p>
-                <p>📱 Instagram: xxxxxxz</p>
-                <p>📍 Location: Pathum Thani, Thailand</p>
-            </div>
-
+            <p style="margin-top: 15px;">📧 Email: xxxxxxxxxxxxz@gmail.com</p>
+            <p>📍 Location: Pathum Thani, Thailand</p>
         </div>
     </section>
 
-
-    <!-- =========================
-         Footer
-         ส่วนท้ายของเว็บไซต์
-    ========================== -->
     <footer>
         <p>© 2026 My Portfolio. All Rights Reserved.</p>
     </footer>
 
+    <!-- JavaScript Data Fetching & DOM Manipulation -->
+    <script>
+        const API_URL = 'https://script.google.com/macros/s/AKfycbzv_tGE08kp4zysNnTaGLTSiroj2GeV2Dw53Pz8pCyD9otFOCHdLgHnK8bYA-x5QM67rA/exec';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchPortfolioData();
+        });
+
+        async function fetchPortfolioData() {
+            const loadingOverlay = document.getElementById('loading');
+            
+            try {
+                const response = await fetch(API_URL);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                // Map ข้อมูล Profile และ Portfolio เข้า UI
+                renderProfile(data.profile);
+                renderPortfolio(data.portfolio);
+                
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                alert('เกิดข้อผิดพลาดในการโหลดข้อมูล กรุณาลองใหม่อีกครั้ง');
+            } finally {
+                // ซ่อน Loading Screen เมื่อโหลดข้อมูลเสร็จสิ้น
+                loadingOverlay.style.opacity = '0';
+                setTimeout(() => {
+                    loadingOverlay.style.display = 'none';
+                }, 500);
+            }
+        }
+
+        function renderProfile(profile) {
+            if (!profile) return;
+
+            // Hero Section
+            document.getElementById('hero-name').textContent = profile.name;
+            document.getElementById('hero-university').textContent = profile.university;
+            document.getElementById('hero-job').textContent = `${profile.job} - ${profile.major}`;
+
+            // About Section
+            document.getElementById('about-faculty-major').textContent = 
+                `ศึกษาอยู่ที่ ${profile.university} ${profile.faculty} สาขา ${profile.major}`;
+            
+            document.getElementById('info-fullname').textContent = profile.name;
+            document.getElementById('info-nickname').textContent = profile.nickname;
+            document.getElementById('info-university').textContent = profile.university;
+            document.getElementById('info-faculty-major').textContent = `${profile.faculty} (${profile.major})`;
+            document.getElementById('info-job').textContent = profile.job;
+
+            // Map Skills Tag
+            const skillsContainer = document.getElementById('skills-container');
+            skillsContainer.innerHTML = '';
+            
+            if (profile.skills) {
+                const skillsArray = profile.skills.split(',').map(skill => skill.trim());
+                skillsArray.forEach(skill => {
+                    const tag = document.createElement('span');
+                    tag.className = 'role-tag';
+                    tag.style.background = '#e63946';
+                    tag.style.color = '#fff';
+                    tag.textContent = skill;
+                    skillsContainer.appendChild(tag);
+                });
+            }
+        }
+
+        function renderPortfolio(portfolioList) {
+            const projectGrid = document.getElementById('project-grid');
+            projectGrid.innerHTML = '';
+
+            if (!portfolioList || portfolioList.length === 0) {
+                projectGrid.innerHTML = '<p>ไม่พบข้อมูลผลงาน</p>';
+                return;
+            }
+
+            portfolioList.forEach(item => {
+                const card = document.createElement('article');
+                card.className = 'project-card';
+
+                card.innerHTML = `
+                    <div class="project-image">
+                        <img src="${item.image_url}" alt="${item.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=No+Image'">
+                    </div>
+                    <div class="project-content">
+                        <p class="project-date">${item.date}</p>
+                        <h3 style="margin-bottom: 8px;">${item.title}</h3>
+                        <p style="margin-bottom: 12px; font-size: 0.95rem;">${item.description}</p>
+                        <span class="role-tag">${item.role}</span>
+                    </div>
+                `;
+
+                projectGrid.appendChild(card);
+            });
+        }
+    </script>
 </body>
 </html>
